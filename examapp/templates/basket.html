@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+<h1>View Basket</h1>
+<a href="{% url 'index' %}" class="btn btn-primary">Return Home</a>
+<h2><strong>Total: </strong>€{{ total }}</h2>
+    {% if orders %}
+    {% for game in orders %}
+    <div class="card" style="width: 35rem;">
+        <div class="card-body">
+          <h5 class="card-title"><strong>Name: </strong>{{ game.game.name }}</h5>
+          <p class="card-text"><strong>Date Ordered: </strong>{{ game.date_ordered }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Price: </strong>€{{ game.game.price}}</li>
+        </ul>
+      </div>
+      <br>
+      {% endfor %}
+    {% else %}
+        <h3>You have no games in your basket</h3>
+
+    {% endif %}
+
+{% endblock %}

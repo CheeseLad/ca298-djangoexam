@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>View Game</h1>
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><strong>Name: </strong>{{ game.name }}</h5>
+      <p class="card-text"><strong>Description: </strong>{{ game.description }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Platform: </strong>{{ game.platform }}</li>
+      <li class="list-group-item"><strong>Genre: </strong>{{ game.genre }}</li>
+      <li class="list-group-item"><strong>Price: </strong>€{{ game.price}}</li>
+    </ul>
+    {% if user.is_authenticated %}
+    <div class="card-body">
+        <a href="{% url 'buy_game' game.id %}" class="btn btn-primary">Add to Basket</a>
+    </div>
+    {% endif %}
+  </div>
+{% endblock %}

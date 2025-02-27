@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+    <h1>All Games</h1>
+    <a href="{% url 'index' %}" class="btn btn-primary">Return Home</a>
+    {% for game in games %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><strong>Name: </strong>{{ game.name }}</h5>
+          <p class="card-text"><strong>Description: </strong>{{ game.description }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Platform: </strong>{{ game.platform }}</li>
+          <li class="list-group-item"><strong>Genre: </strong>{{ game.genre }}</li>
+          <li class="list-group-item"><strong>Price: </strong>€{{ game.price}}</li>
+          {% if game.stock > 0 %}
+            <li class="list-group-item"><strong>Stock: </strong>{{ game.stock }} in stock</li>
+            {% else %}
+            <li class="list-group-item"><strong>Stock: </strong>Out of stock</li>
+            {% endif %}
+        </ul>
+        <div class="card-body">
+            <a href="{% url 'single_game' gameid=game.id %}" class="btn btn-primary">View Game</a>
+        </div>
+      </div>
+      <br>
+      {% endfor %}
+{% endblock %}

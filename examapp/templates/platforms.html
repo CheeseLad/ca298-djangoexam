@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1>All Platforms</h1>
+    <a href="{% url 'index' %}" class="btn btn-primary">Return Home</a>
+    {% for platform in platforms %}
+    <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><strong>Platform: </strong>{{ platform.platform }} </h5>
+        </div>
+        <div class="card-body">
+            <a href="{% url 'single_platform' consoleid=platform.id %}" class="btn btn-primary">View Available Games</a>
+        </div>
+      </div>
+      <br>
+      {% endfor %}   
+{% endblock %}

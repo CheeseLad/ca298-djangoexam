@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% block content %}
+    <h1>{{ game.name }} has been successfully added to your basket</h1>
+    <h3>Account: {{user.email}}</h3>
+    <h3>Added: {{ gameuser.date_ordered }}</h3>
+    <br>
+    <h1>You have added:</h1>
+    <br>
+
+<div class="card" style="width: 18rem;">
+    <div class="card-body">
+      <h5 class="card-title"><strong>Name: </strong>{{ game.name }}</h5>
+      <p class="card-text"><strong>Description: </strong>{{ game.description }}</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item"><strong>Platform: </strong>{{ game.platform }}</li>
+      <li class="list-group-item"><strong>Genre: </strong>{{ game.genre }}</li>
+      <li class="list-group-item"><strong>Price: </strong>€{{ game.price}}</li>
+    </ul>
+    <div class="card-body">
+        <a href="{% url 'index' %}" class="btn btn-primary">Return Home</a>
+    </div>
+  </div>
+{% endblock %}
